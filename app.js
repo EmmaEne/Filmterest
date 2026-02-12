@@ -379,6 +379,7 @@ const els = {
   profileSidebar: $("#profileSidebar"),
   profileBackdrop: $("#profileBackdrop"),
   profileBtn: $("#profileBtn"),
+  profileCloseBtn: $("#profileCloseBtn"),
   profileSavedCount: $("#profileSavedCount"),
   profileBoardCount: $("#profileBoardCount"),
   // Toast
@@ -523,7 +524,7 @@ function createPinCard(item, index) {
   const isSaved = state.saved.has(item.id);
 
   card.innerHTML = `
-    <div class="pin-card__media" style="aspect-ratio: 4/${(3 + Math.random() * 2).toFixed(1)}">
+    <div class="pin-card__media" style="height:${item.height}px">
       <img class="pin-card__img" data-src="${item.image}" alt="${item.title}" />
       <div class="pin-card__overlay">
         <div class="pin-card__overlay-top">
@@ -1026,6 +1027,7 @@ function setupEvents() {
   // Profile
   els.profileBtn.addEventListener("click", openProfile);
   els.profileBackdrop.addEventListener("click", closeProfile);
+  els.profileCloseBtn.addEventListener("click", closeProfile);
   if (els.mobileProfileBtn) {
     els.mobileProfileBtn.addEventListener("click", (e) => {
       e.preventDefault();
