@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Filmterest - Photography and Places Discovery</title>
+  <meta name="description"
+    content="Discover cinematic photography and breathtaking landmarks. Save, curate, and share visual inspiration from around the world." />
+  <meta name="theme-color" content="#111111" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- TOP NAVIGATION -->
+  <header class="header" id="siteHeader">
+    <div class="header__inner">
+      <a href="#" class="header__brand" id="brandLink">
+        <span class="header__logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path
+              d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94" />
+          </svg>
+        </span>
+        <span class="header__wordmark">Filmterest</span>
+      </a>
+
+      <nav class="header__nav" id="mainNav">
+        <a href="#" class="header__nav-link active" data-view="home">Home</a>
+        <a href="#" class="header__nav-link" data-view="explore">Explore</a>
+        <a href="#" class="header__nav-link" data-view="boards">Boards</a>
+      </nav>
+
+      <div class="header__search" id="searchContainer">
+        <svg class="header__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input type="search" id="searchInput" class="header__search-input"
+          placeholder="Search photography, places, moods..." autocomplete="off" />
+        <kbd class="header__search-kbd">/</kbd>
+      </div>
+
+      <div class="header__actions">
+        <button class="header__icon-btn" id="uploadBtn" aria-label="Upload" title="Upload a pin">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+        </button>
+        <button class="header__icon-btn" id="notifBtn" aria-label="Notifications" title="Notifications">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+          <span class="header__notif-dot"></span>
+        </button>
+        <button class="header__avatar" id="profileBtn" aria-label="Profile" title="Your profile">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80"
+            alt="Profile" />
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main" id="mainContent">
+
+    <!-- Hero Banner -->
+    <section class="hero" id="heroBanner">
+      <div class="hero__content">
+        <span class="hero__eyebrow">Discover</span>
+        <h1 class="hero__title">Photography and places<br />that feel like a film still.</h1>
+        <p class="hero__subtitle">Curate visual stories from landscapes, cities, and hidden corners of the world.</p>
+        <div class="hero__actions">
+          <button class="btn btn--primary" id="heroExploreBtn">Start Exploring</button>
+          <button class="btn btn--ghost" id="heroCreateBoardBtn">Create a Board</button>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__mosaic">
+          <div class="hero__mosaic-item hero__mosaic-item--1"></div>
+          <div class="hero__mosaic-item hero__mosaic-item--2"></div>
+          <div class="hero__mosaic-item hero__mosaic-item--3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Chips -->
+    <section class="categories" id="categorySection">
+      <div class="categories__scroll" id="categoryScroll"></div>
+    </section>
+
+    <!-- Feed Controls -->
+    <section class="feed-controls" id="feedControls">
+      <div class="feed-controls__left">
+        <h2 class="feed-controls__title" id="feedTitle">For You</h2>
+        <span class="feed-controls__count" id="feedCount"></span>
+      </div>
+      <div class="feed-controls__right">
+        <button class="feed-controls__toggle" id="savedToggle" aria-label="Show saved only">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+          </svg>
+          <span>Saved</span>
+        </button>
+        <div class="feed-controls__layout">
+          <button class="feed-controls__layout-btn active" data-cols="default" aria-label="Default grid">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+            </svg>
+          </button>
+          <button class="feed-controls__layout-btn" data-cols="compact" aria-label="Compact grid">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="4" height="4" />
+              <rect x="10" y="3" width="4" height="4" />
+              <rect x="17" y="3" width="4" height="4" />
+              <rect x="3" y="10" width="4" height="4" />
+              <rect x="10" y="10" width="4" height="4" />
+              <rect x="17" y="10" width="4" height="4" />
+              <rect x="3" y="17" width="4" height="4" />
+              <rect x="10" y="17" width="4" height="4" />
+              <rect x="17" y="17" width="4" height="4" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Masonry Grid -->
+    <section class="grid-section">
+      <div class="masonry" id="masonryGrid"></div>
+      <div class="load-more" id="loadMoreWrap">
+        <button class="btn btn--outline" id="loadMoreBtn">
+          <span>Load More</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIN DETAIL MODAL -->
+  <div class="modal-overlay" id="pinModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal" id="pinModalContent">
+      <button class="modal__close" id="pinModalClose" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <div class="modal__img-side">
+        <img id="modalImage" src="" alt="" />
+      </div>
+      <div class="modal__detail-side">
+        <div class="modal__detail-header">
+          <div class="modal__actions">
+            <button class="btn btn--icon" id="modalShareBtn" aria-label="Share">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+              </svg>
+            </button>
+            <button class="btn btn--icon" id="modalLinkBtn" aria-label="Copy link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+              </svg>
+            </button>
+            <button class="btn btn--save" id="modalSaveBtn">Save</button>
+          </div>
+        </div>
+        <div class="modal__detail-body">
+          <span class="modal__category" id="modalCategory"></span>
+          <h2 class="modal__title" id="modalTitle"></h2>
+          <p class="modal__description" id="modalDescription"></p>
+          <div class="modal__meta">
+            <div class="modal__meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span id="modalLocation"></span>
+            </div>
+          </div>
+          <div class="modal__tags" id="modalTags"></div>
+        </div>
+        <div class="modal__detail-footer">
+          <div class="modal__related-title">More like this</div>
+          <div class="modal__related" id="modalRelated"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOARD CREATION MODAL -->
+  <div class="modal-overlay" id="boardModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal modal--sm">
+      <button class="modal__close" id="boardModalClose" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <div class="modal__form-content">
+        <h2 class="modal__form-title">Create Board</h2>
+        <p class="modal__form-subtitle">Organize your favorite pins into collections.</p>
+        <form id="createBoardForm">
+          <div class="form-group">
+            <label for="boardName">Board Name</label>
+            <input type="text" id="boardName" placeholder="e.g. Nordic Escapes" required />
+          </div>
+          <div class="form-group">
+            <label for="boardDesc">Description <span class="optional">(optional)</span></label>
+            <textarea id="boardDesc" rows="3" placeholder="What is this board about?"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Visibility</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="boardVisibility" value="public"
+                  checked /><span>Public</span></label>
+              <label class="radio-label"><input type="radio" name="boardVisibility"
+                  value="private" /><span>Private</span></label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Create Board</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAVE TO BOARD POPOVER -->
+  <div class="save-popover" id="savePopover" aria-hidden="true">
+    <div class="save-popover__header">
+      <span>Save to board</span>
+      <button class="save-popover__new" id="savePopoverNew">+ New</button>
+    </div>
+    <div class="save-popover__list" id="savePopoverList"></div>
+  </div>
+
+  <!-- PROFILE SIDEBAR -->
+  <aside class="profile-sidebar" id="profileSidebar" aria-hidden="true">
+    <div class="profile-sidebar__backdrop" id="profileBackdrop"></div>
+    <div class="profile-sidebar__panel">
+      <div class="profile-sidebar__header">
+        <img class="profile-sidebar__avatar"
+          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=160&q=80"
+          alt="Profile" />
+        <h3 class="profile-sidebar__name">Alex Chen</h3>
+        <p class="profile-sidebar__handle">@alexvisuals</p>
+      </div>
+      <div class="profile-sidebar__stats">
+        <div class="profile-sidebar__stat">
+          <span class="profile-sidebar__stat-value" id="profileSavedCount">0</span>
+          <span class="profile-sidebar__stat-label">Saved</span>
+        </div>
+        <div class="profile-sidebar__stat">
+          <span class="profile-sidebar__stat-value" id="profileBoardCount">0</span>
+          <span class="profile-sidebar__stat-label">Boards</span>
+        </div>
+        <div class="profile-sidebar__stat">
+          <span class="profile-sidebar__stat-value">128</span>
+          <span class="profile-sidebar__stat-label">Following</span>
+        </div>
+      </div>
+      <nav class="profile-sidebar__nav">
+        <a href="#" class="profile-sidebar__nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          Profile
+        </a>
+        <a href="#" class="profile-sidebar__nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+          </svg>
+          Saved Pins
+        </a>
+        <a href="#" class="profile-sidebar__nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+          Settings
+        </a>
+      </nav>
+      <button class="profile-sidebar__logout">Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#" class="mobile-nav__item active" data-view="home" aria-label="Home">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+    </a>
+    <a href="#" class="mobile-nav__item" data-view="explore" aria-label="Explore">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    </a>
+    <a href="#" class="mobile-nav__item" data-view="boards" aria-label="Boards">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        <line x1="3" y1="9" x2="21" y2="9" />
+        <line x1="9" y1="21" x2="9" y2="9" />
+      </svg>
+    </a>
+    <a href="#" class="mobile-nav__item" id="mobileProfileBtn" aria-label="Profile">
+      <img class="mobile-nav__avatar"
+        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80"
+        alt="Profile" />
+    </a>
+  </nav>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
